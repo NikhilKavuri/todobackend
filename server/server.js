@@ -10,7 +10,18 @@ app.use(cors());
 const fs = require('fs');
 
 const todos = JSON.parse(fs.readFileSync('./todos.json'));
+const data = [
+  { id: 1, 
+    text: "Learn React", 
+    complete: false },
+  {
+    id: 2,
+    text: "Learn Node",
+    complete: false,
+  },
+];
 /*
+
 the schema for a todo should be as follows:
 {
     id: number (unique identifier for the todo item - should be auto generated),
@@ -34,7 +45,8 @@ Sample response:
     ]
 */
 app.get('/todos', (req, res) => {
-    res.json(todos);
+    let a = res.json(data);
+    console.log(a);
 });
 
 
