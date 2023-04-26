@@ -52,19 +52,7 @@ const server = http.createServer((req, res) => {
       res.end();
     }
   }
-  if (req.method === "GET" && req.url.startsWith("/todo/complete/")) {
-    const lastTerm = parseInt(req.url.split("/")[3]);
-    console.log(lastTerm);
-    const todos = JSON.parse(fs.readFileSync("./todos.json"));
-    const todo = todos.find((todo) => todo.id === lastTerm);
-    if (todo) {
-      todo.complete = true;
-      fs.writeFileSync("./todos.json", JSON.stringify(todos));
-      res.setHeader("Content-Type", "application/json");
-      res.writeHead(200);
-      res.end(JSON.stringify(todo));
-    }
-  }
+  
 });
 
 server.listen(5000, () => console.log("Server is running on port 5000"));
